@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Pour toi ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 🎬 INTRO CINÉMA -->
+<div id="intro-screen">
+  <p id="intro-text"></p>
+</div>
+
+<header>
+  💖 Pour toi Sarro 💖
+</header>
+
+<!-- 🎵 MUSIQUE -->
+<audio id="music" loop>
+  <source src="assets\KASO - NETFAKARNA SGHAR.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+
+  <!-- 💌 LETTRE -->
+  <div class="letter">
+    <h2>Joyeux anniversaire ❤️</h2>
+    <p id="text"></p>
+  </div>
+
+  <!-- 📸 PHOTOS -->
+  <div class="photos">
+    <img src="assets\CEKJ0550.JPG">
+    <img src="assets\IMG_2399 - Copie.JPG"">
+    <img src="assets\IMG_3149.JPG">
+    <img src="assets\IMG_3399 - Copie.JPG">
+    <img src="assets\IMG_3462.JPG">
+    <img src="assets\IMG_4327.JPG">
+    <img src="assets\IMG_6038.JPG">
+    <img src="assets\IMG_7166.JPG">
+    <img src="assets\IMG_9703.JPG">
+    <img src="assets\IMG_20200114_180252_805.jpg">
+    <img src="assets\received_138886934521873.jpeg">
+    <img src="assets\received_435646798297356.jpeg">
+    <img src="assets\received_650259416591579.jpeg">
+    <img src="assets\received_895645754805384.jpeg">
+    <img src="assets\received_1099285384224383.jpeg">
+  </div>
+
+</div>
+
+<script>
+// 🎬 INTRO TEXTE
+const introMessage = "J’ai quelque chose à te dire...";
+
+let i = 0;
+function typeIntro() {
+  if (i < introMessage.length) {
+    document.getElementById("intro-text").innerHTML += introMessage.charAt(i);
+    i++;
+    setTimeout(typeIntro, 70);
+  } else {
+    setTimeout(startMain, 1500);
+  }
+}
+
+function startMain() {
+  document.getElementById("intro-screen").classList.add("fade-out");
+}
+
+// 🎵 musique au clic (obligatoire navigateur)
+document.body.addEventListener("click", () => {
+  document.getElementById("music").play();
+}, { once: true });
+
+// 📸 apparition progressive photos
+function showPhotos() {
+  const photos = document.querySelectorAll(".photos img");
+
+  photos.forEach((photo, index) => {
+    setTimeout(() => {
+      photo.classList.add("show");
+    }, index * 400);
+  });
+}
+
+// 💌 lettre qui s’écrit
+const message = "Joyeux annniversaire okhty, nshalah kol aam wenty haya bkhir o kol aam o enty okhty o raby yfadhlek. J'aurais aimé etre la bahdhek fi antibes et passer la journée avec toi mais je suis sure que ça arrivera un jour o bsh netlamou et on crée de nouveaux souvenirs ensemble comme on a toujours su le faire. Kol aam je suis plus reconnaissante de t'avoir fi hyeti sarro o nshalah raby ydawem eeshretna. Nshalah ay haja thebha o tetmaneha raby yaatihelek okhty tu merites tout ce qu'il y'a de mieux dans ce monde. Nhebek barsha barsha sarro ❤️. J'espère que tu passeras une belle journée kima enty theb et que cette année tkoun kima enty theb zeda que ce soit sur le plan personnel wala sur le plan universitaire et je suis sure que tu réussiras kima laada et que tu nous rendras fiers et le plus important c'est que tu seras fière de toi aussi .Je t'aime okhty et ne cesse jamais de briller mon soleil.";
+
+let j = 0;
+function typeLetter() {
+  if (j < message.length) {
+    document.getElementById("text").innerHTML += message.charAt(j);
+    j++;
+    setTimeout(typeLetter, 40);
+  }
+}
+
+// 🎬 LANCEMENT GLOBAL
+typeIntro();
+
+setTimeout(() => {
+  showPhotos();
+}, 3000);
+
+setTimeout(() => {
+  typeLetter();
+}, 5000);
+
+</script>
+
+</body>
+</html>
